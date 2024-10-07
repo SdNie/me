@@ -1,0 +1,49 @@
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      const domNode = document.getElementById('app');
+      
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Thatcher'];
+        const [likes, setLikes] = React.useState(0);
+        //first value is valuename second one is the increment or smth like that.
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        return <div>
+          <Header title="Improvise. Adapt. Overcome." />
+          <ul>
+            {names.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+          </ul> 
+
+          <button onClick={handleClick}>Like({likes})</button>
+        </div>;
+      }
+
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return 'Default title';
+        }
+      }
+       
+      function Header({ title }) {
+        return <h1>{createTitle(title)}</h1>;
+      }
+
+      const root = ReactDOM.createRoot(domNode);
+      root.render(<HomePage />);
+    </script>
+    </script>
+  </body>
+</html>
+
